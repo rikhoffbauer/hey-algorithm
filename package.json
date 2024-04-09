@@ -1,0 +1,25 @@
+{
+  "name": "hey-algorithm",
+  "version": "1.0.0",
+  "description": "Proof of Concept for Wake Word Detection",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@picovoice/web-voice-processor": "^1.0.0",
+    "@picovoice/picovoice-web": "^1.0.0",
+    "@picovoice/cobra-web": "^1.0.0",
+    "@picovoice/porcupine-web": "^1.0.0",
+    "@picovoice/leopard-web": "^1.0.0",
+    "@picovoice/web-utils": "^1.0.0",
+    "tailwindcss": "^2.0.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0",
+    "typescript": "^4.0.0"
+  }
+}
