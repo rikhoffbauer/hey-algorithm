@@ -5,7 +5,7 @@ let porcupineWorker: PorcupineWorker | null = null;
 
 async function startWakeWordDetection(wakeWord: string) {
   porcupineWorker = await PorcupineWorkerFactory.create({
-    accessKey: "your-access-key", // AccessKey obtained from Picovoice Console (replace with a valid key)
+    accessKey: localStorage.picoVoiceAccessKey, // TODO make configurable via UI
     keywords: [wakeWord]
   });
 
