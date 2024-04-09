@@ -1,32 +1,8 @@
-import { PorcupineWorkerFactory, PorcupineWorker } from "@picovoice/porcupine-web";
+import { startWakeWordDetection, stopWakeWordDetection } from "./wakeword";
 import { WebVoiceProcessor } from "@picovoice/web-voice-processor";
 
-let porcupineWorker: PorcupineWorker | null = null;
-
-async function initWakeWordDetection() {
-  porcupineWorker = await PorcupineWorkerFactory.create({
-    // Placeholder for the actual wake word configuration
-  });
-
-  porcupineWorker.onmessage = (message: MessageEvent) => {
-    if (message.data.command === "wake-word-detected") {
-      console.log("Wake word detected!");
-      // Placeholder for handling the transcribed speech after wake word detection
-    }
-  };
-
-  WebVoiceProcessor.init({
-    engines: [porcupineWorker]
-  });
-}
-
-function handleTranscribedSpeech(transcription: string) {
-  console.log("Transcribed speech:", transcription);
-  // Placeholder for further processing of transcribed speech
-}
-
-// Placeholder for starting and stopping the wake word detection
-// and for configuring the wake word
+// Remove unnecessary closing brace and update export statement
+// Correct the event listeners to use the imported functions
 
 document.addEventListener("DOMContentLoaded", () => {
   const startButton = document.getElementById("startButton") as HTMLButtonElement;
@@ -38,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (wakeWord) {
       statusElement.textContent = "Status: Initializing...";
       try {
-        await initWakeWordDetection(wakeWord);
+        await startWakeWordDetection(wakeWord);
         statusElement.textContent = "Status: Detection running";
         startButton.disabled = true;
         stopButton.disabled = false;
@@ -52,15 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   stopButton.addEventListener("click", () => {
-    if (porcupineWorker) {
-      porcupineWorker.postMessage({ command: "stop" });
-      WebVoiceProcessor.terminate();
-      porcupineWorker = null;
-      statusElement.textContent = "Status: Detection stopped";
-      startButton.disabled = false;
-      stopButton.disabled = true;
-    }
+    stopWakeWordDetection();
+    statusElement.textContent = "Status: Detection stopped";
+    startButton.disabled = false;
+    stopButton.disabled = true;
   });
 });
 
-export { initWakeWordDetection, handleTranscribedSpeech };
+export { handleTranscribedSpeech };
