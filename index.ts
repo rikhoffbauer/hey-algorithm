@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   startButton.addEventListener("click", async () => {
     const wakeWord = (document.getElementById("wakeWord") as HTMLInputElement).value;
-    if (wakeWord) {
       statusElement.textContent = "Status: Initializing...";
       try {
         await startWakeWordDetection(wakeWord);
@@ -22,9 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error(error);
         statusElement.textContent = "Status: Error initializing wake word detection";
       }
-    } else {
-      statusElement.textContent = "Status: Please enter a wake word";
-    }
   });
 
   stopButton.addEventListener("click", () => {

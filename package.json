@@ -10,12 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@picovoice/web-voice-processor": "^1.0.0",
-    "@picovoice/picovoice-web": "^1.0.0",
-    "@picovoice/cobra-web": "^1.0.0",
-    "@picovoice/porcupine-web": "^1.0.0",
-    "@picovoice/leopard-web": "^1.0.0",
-    "@picovoice/web-utils": "^1.0.0",
+    "@picovoice/web-voice-processor": "latest",
+    "@picovoice/picovoice-web": "latest",
+    "@picovoice/cobra-web": "latest",
+    "@picovoice/porcupine-web": "latest",
+    "@picovoice/leopard-web": "latest",
+    "@picovoice/web-utils": "latest",
     "tailwindcss": "^2.0.0"
   },
   "devDependencies": {
